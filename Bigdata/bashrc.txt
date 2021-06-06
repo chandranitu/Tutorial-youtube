@@ -1,0 +1,321 @@
+export JAVA_HOME=/usr/lib/jvm/jdk1.8
+export PATH=$PATH:$JAVA_HOME/bin
+export CLASSPATH=$CLASSPATH:$JAVA_HOME/lib
+export JAVA_OPTS="-Xms512m -Xmx4G"
+
+export HADOOP_HOME=/usr/local/hadoop-3.1.2
+export HADOOP_INSTALL=$HADOOP_HOME
+#export HADOOP_PREFIX=$HADOOP_HOME
+export HADOOP_MAPRED_HOME=$HADOOP_HOME
+export HADOOP_COMMON_HOME=$HADOOP_HOME
+export HADOOP_HDFS_HOME=$HADOOP_HOME
+export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/
+export HADOOP_OPTS="-Djava.library.path=$HADOOP_HOME/lib"
+export HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop
+export YARN_HOME=$HADOOP_HOME/
+export HADOOP_YARN_HOME=$HADOOP_HOME/
+
+export PATH=.:$PATH:$HADOOP_INSTALL/bin:$HADOOP_INSTALL/sbin
+export CLASSPATH=.:$CLASSPATH:$HADOOP_HOME/lib:$HADOOP_HOME/share/hadoop/common:$HADOOP_HOME/share/hadoop/common/lib:$HADOOP_HOME/share/hadoop/hdfs/*:$HADOOP_HOME/share/hadoop/mapreduce/*:$HADOOP_HOME/share/hadoop/mapreduce/lib/*:
+
+#ALLUXIO
+export ALLUXIO_HOME=/usr/local/alluxio-2.4.1
+export PATH=$PATH:$ALLUXIO_HOME/bin
+export CLASSPATH=$CLASSPATH:$ALLUXIO_HOME/lib/*
+
+#GROOVY
+export GROOVY_HOME=/usr/local/groovy-3.0.7
+export PATH=$PATH:$GROOVY_HOME/bin
+export CLASSPATH=$CLASSPATH:$GROOVY_HOME/lib/*
+
+
+
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/hadoop/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/hadoop/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/hadoop/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/hadoop/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+
+#SONARQUBE
+export SONARQUBE_HOME=/usr/local/sonarqube-8.4.1
+export PATH=$PATH:$SONARQUBE_HOME/bin
+export CLASSPATH=$CLASSPATH:$SONARQUBE_HOME/lib/*
+
+#SONARSCANNER
+export SONARSCANNER_HOME=/home/hadoop/sonar-scanner-4.4.0
+export PATH=$PATH:$SONARSCANNER_HOME/bin
+export CLASSPATH=$CLASSPATH:$SONARSCANNER_HOME/lib/*
+
+#PYTHON
+#alias python='/usr/bin/python3.5'
+#export PYTHON_HOME=/home/hadoop/Python-3.5.6
+#export PATH=$PATH:$PYTHON_HOME/bin
+#export CLASSPATH=$CLASSPATH:$PYTHON_HOME/Lib/*
+
+#PROMETHEUS
+#export PROMETHEUS_HOME=/usr/local/prometheus-2.19.0
+#export PATH=$PATH:$PROMETHEUS_HOME/bin
+#export CLASSPATH=$CLASSPATH:$PROMETHEUS_HOME/lib/*
+
+#Andriod
+#ANDROID_HOME/cmdline-tools is mandatory for SDK tools
+export PATH=/home/hadoop/ANDROID_HOME/cmdline-tools/tools:/home/hadoop/ANDROID_HOME/cmdline-tools/tools/bin:$PATH
+
+#GRADLE
+export GRADLE_HOME=/usr/local/gradle-6.5
+export PATH=$PATH:$GRADLE_HOME/bin
+export CLASSPATH=$CLASSPATH:$GRADLE_HOME/lib/*
+
+#SCALA
+#export SCALA_HOME=/usr/local/scala-2.11.8
+export SCALA_HOME=/usr/local/scala-2.12.8
+export PATH=$PATH:$SCALA_HOME/bin
+export CLASSPATH=$CLASSPATH:$SCALA_HOME/lib/*
+
+#Spark
+#export SPARK_HOME=/usr/local/spark-2.1.0
+export SPARK_HOME=/usr/local/spark-3.0.0
+export PATH=$PATH:$SPARK_HOME/bin
+export CLASSPATH=$CLASSPATH:$SPARK_HOME/jars/*:$SPARK_HOME/R/lib
+
+#PIG
+
+export PIG_HOME=/usr/local/pig-0.16
+export PATH=$PATH:$PIG_HOME/bin
+export CLASSPATH=$CLASSPATH:$PIG_HOME/lib/*
+export PIG_CONF_DIR=$PIG_HOME/conf
+
+#HIVE
+#export HIVE_HOME=/usr/local/hive-1.2.1
+#export HIVE_HOME=/usr/local/hive-2.1.1
+export HIVE_HOME=/usr/local/hive-2.3.6
+export PATH=$PATH:$HIVE_HOME/bin
+export CLASSPATH=$CLASSPATH:$HADOOP_HOME/lib/*:.
+export CLASSPATH=$CLASSPATH:$HIVE_HOME/lib/*:/home/hadoop/hiveudf-0.0.1-SNAPSHOT.jar
+
+#Anaconda
+
+#export PATH=/home/hadoop/anaconda3/bin:$PATH
+export PYTHONHASHSEED=0
+
+#APACHE LIVY
+export LIVY_HOME=/usr/local/livy-0.6.0
+export PATH=$PATH:$LIVY_HOME/bin
+export CLASSPATH=$CLASSPATH:$LIVY_HOME/lib
+
+
+#ACTIVE MQ
+export ACTIVE_HOME=/usr/local/activemq-5.15.9
+export PATH=$PATH:$ACTIVE_HOME/bin
+export CLASSPATH=$CLASSPATH:$ACTIVE_HOME/lib
+
+#ORACLE
+#export ORACLE_HOME=/u01/app/oracle/product/11.2.0/xe
+#export ORACLE_SID=XE
+#export NLS_LANG='$ORACLE_HOME/bin/nls_lang.sh'
+#export ORACLE_BASE=/u01/app/oracle
+#export LD_LIBRARY_PATH=$ORACLE_HOME/lib:$LD_LIBRARY_PATH
+#export PATH=$ORACLE_HOME/bin:$PATH
+
+#NAGIOS
+export NAGIOS_HOME=/usr/local/nagios-4.3.4
+#export PATH=$PATH:$NAGIOS_HOME/bin
+export CLASSPATH=$CLASSPATH:$NAGIOS_HOME/lib/*
+
+#KUBERNETES
+export KUBERNETES_HOME=/usr/local/kubernetes
+#export PATH=$PATH:$KUBERNETES_HOME/bin
+#export CLASSPATH=$CLASSPATH:$KUBERNETES_HOME/lib/*
+
+#GO GOLANG
+export GO_HOME=/usr/local/go
+export PATH=$PATH:$GO_HOME/bin
+export CLASSPATH=$CLASSPATH:$GO_HOME/lib
+
+
+#GOBBLIN
+export GOBBLIN_HOME=/usr/local/gobblin_0.11.0
+export PATH=$PATH:$GOBBLIN_HOME/bin
+
+#Flink
+export FLINK_HOME=/usr/localhdp/flink-1.4.1
+export PATH=$PATH:$FLINK_HOME/bin
+export CLASSPATH=$CLASSPATH:$FLINK_HOME/lib/*
+
+#export PYTHONPATH=$SPARK_HOME/python/:$PYTHONPATH
+export PYTHONPATH=$SPARK_HOME/python/lib/py4j-0.10.7-src.zip:$PYTHONPATH
+export SPARK_LOCAL_IP=localhost 
+#export PYSPARK_PYTHON=python3
+
+#export PYSPARK_DRIVER_PYTHON=jupyter
+#export PYSPARK_DRIVER_PYTHON_OPTS='notebook'
+
+
+#TEZ o.7.1
+#export TEZ_HOME=/usr/local/tez-0.7.1
+#export PATH=$PATH:$TEZ_HOME/bin
+#export CLASSPATH=$CLASSPATH:$TEZ_HOME/lib/*:$TEZ_HOME/tez-dag-0.7.1.jar:$TEZ_HOME/tez-api-0.7.1.jar:$TEZ_HOME/tez-common-0.7.1.jar:$TEZ_HOME/tez-dag-0.7.1.jar:$TEZ_HOME/tez-examples-0.7.1.jar:$TEZ_HOME/tez-history-parser-0.7.1.jar:$TEZ_HOME/tez-job-analyzer-0.7.1.jar:$TEZ_HOME/tez-mapreduce-0.7.1.jar:$TEZ_HOME/tez-runtime-internals-0.7.1.jar:$TEZ_HOME/tez-runtime-library-0.7.1.jar:$TEZ_HOME/tez-tests-0.7.1.jar:$TEZ_HOME/tez-yarn-timeline-history-0.7.1.jar:$TEZ_HOME/tez-yarn-timeline-history-with-acls-0.7.1.jar
+
+
+#ECLIPSE
+export SWT_GTK3=0 
+
+#JULIA
+export JULIA_HOME=/usr/local/julia-1.2.0
+export PATH=$PATH:$JULIA_HOME/bin
+export CLASSPATH=$CLASSPATH:$JULIA_HOME/lib/*
+
+#NIFI
+export NIFI_HOME=/usr/local/nifi-1.8.0
+export PATH=$PATH:$NIFI_HOME/bin
+export CLASSPATH=$CLASSPATH:$NIFI_HOME/lib/*
+
+#CASSANDRA
+
+#export CASSANDRA_HOME=/usr/local/cassandra-2.1.12
+export CASSANDRA_HOME=/usr/local/cassandra-3.9
+export PATH=$PATH:$CASSANDRA_HOME/bin
+export CLASSPATH=$CLASSPATH:$CASSANDRA_HOME/lib/*
+export PIG_INITIAL_ADDRESS=localhost
+export PIG_RPC_PORT=9160
+export PIG_PARTITIONER=org.apache.cassandra.dht.Murmur3Partitioner
+export PIG_OPTS="$PIG_OPTS -Dudf.import.list=org.apache.cassandra.hadoop.pig"
+
+#JBOSS FUSE
+
+export FUSE_HOME=/usr/local/jboss-fuse-6.3
+export PATH=$PATH:$FUSE_HOME/bin
+export CLASSPATH=$CLASSPATH:$FUSE_HOME/lib/*
+
+#CAMEL
+
+export CAMEL_HOME=/usr/local/camel-2.18.2
+#export PATH=$PATH:$CAMEL_HOME/bin
+export CLASSPATH=$CLASSPATH:$CAMEL_HOME/lib/*
+
+
+#THRIFT
+
+export THRIFT_HOME=/usr/local/thrift-0.6.0
+
+#SBT
+
+export SBT_HOME=/usr/local/sbt
+export PATH=$PATH:$SBT_HOME/bin:
+
+#Hbase
+export HBASE_HOME=/usr/local/hbase
+export PATH=$PATH:$HBASE_HOME/bin
+export CLASSPATH=$CLASSPATH:$HBASE_HOME/lib
+
+#ACCUMLO--
+export ACCUMULO_HOME=/usr/local/accumulo
+export PATH=$PATH:$ACCUMULO_HOME/bin
+export CLASSPATH=$CLASSPATH:$ACCUMULO_HOME/lib
+
+#Node JS
+#export NODEJS_HOME=/usr/local/nodejs
+#export PATH=$PATH:$NODEJS_HOME/bin:
+
+#HCATALOG
+
+#export HCAT_HOME=/usr/local/hive/hcatalog
+#export PATH=$PATH:$HCAT_HOME/bin
+
+#Zookeeper
+export ZOOKEEPER_HOME=/usr/local/zookeeper-3.4
+export PATH=$PATH:$ZOOKEEPER_HOME/bin
+export CLASSPATH=$CLASSPATH:$ZOOKEEPER_HOME/lib
+
+#STORM
+export STORM_HOME=/usr/local/storm-1.2.2
+export PATH=$PATH:$STORM_HOME/bin
+export CLASSPATH=$CLASSPATH:$STORM_HOME/lib
+
+#FLUME
+export FLUME_HOME=/usr/local/flume-1.6.0
+export PATH=$PATH:$FLUME_HOME/bin
+export CLASSPATH=$CLASSPATH:$FLUME_HOME/lib
+export FLUME_CONF_DIR=$FLUME_HOME/conf
+
+#Sqoop
+export SQOOP_HOME=/usr/local/sqoop1.4
+export PATH=$PATH:$SQOOP_HOME/bin
+export CLASSPATH=$CLASSPATH:$SQOOP_HOME/lib/*
+export SQOOP_CONF_DIR=$SQOOP_HOME/conf
+
+#CLOJURE
+export CLOJURE_HOME=/usr/local/clojure-1.8.0
+#export PATH=$PATH:$CLOJURE_HOME/bin
+export CLASSPATH=$CLASSPATH:$CLOJURE_HOME/clojure-1.8.0.jar
+
+#ZEPPELIN
+#export ZEPPELIN_HOME=/usr/local/zeppelin-0.6.2
+#export ZEPPELIN_MASTER=/usr/local/zeppelin
+#export PATH=$PATH:$ZEPPELIN_HOME/bin
+#export CLASSPATH=$CLASSPATH:$ZEPPELIN_HOME/lib/*
+
+#KAFKA
+export KAFKA_HOME=/usr/local/kafka_2.11-1.1.0
+export PATH=$PATH:$KAFKA_HOME/bin
+export CLASSPATH=$CLASSPATH:$KAFKA_HOME/libs
+
+#nutch
+#export NUTCH_HOME=/usr/local/nutch1.9
+#export PATH=$PATH:$NUTCH_HOME/bin
+#export CLASSPATH=$CLASSPATH:$NUTCH_HOME/lib
+
+#DERBY database
+#export DERBY_HOME=/usr/local/derby
+#export PATH=$PATH:$DERBY_HOME/bin
+#export CLASSPATH=$CLASSPATH:$DERBY_HOME/lib/derby.jar:$DERBY_HOME/lib/derbytools.jar
+#export CLASSPATH=$CLASSPATH:/usr/local/hive/lib/derby-10.10.2.0.jar
+#export CLASSPATH=$CLASSPATH:/usr/local/hive/lib/derby-driver.jar
+
+#oozie
+#export OOZIE_HOME=/usr/local/oozie4.2
+#export PATH=$PATH:$OOZIE_HOME/bin
+#export CLASSPATH=$CLASSPATH:$OOZIE_HOME/lib
+#export OOZIE_URL=http://localhost:11000/oozie
+
+#JMETER
+export JMETER_HOME=/usr/local/jmeter-5.2.1
+export PATH=$PATH:$JMETER_HOME/bin
+export CLASSPATH=$CLASSPATH:$JMETER_HOME/lib
+
+#PROMETHEUS
+export PROMETHEUS_HOME=/usr/local/prometheus-2.19.0
+#export PATH=$PATH:$PROMETHEUS_HOME/bin
+#export CLASSPATH=$CLASSPATH:$PROMETHEUS_HOME/lib/*
+
+###################################
+
+#Tomcat8.0.1
+
+export CATALINA_BASE=/usr/local/tomcat-8.0.1
+export CATALINA_HOME=/usr/local/tomcat-8.0.1
+export CATALINA_TMPDIR=/usr/local/tomcat-8.0.1/temp
+export CLASSPATH=$CLASSPATH:$CATALINA_BASE/bin/bootstrap.jar:$CATALINA_BASE/bin/tomcat-juli.jar
+
+#export CATALINA_BASE=/usr/local/hbase-explorer
+#export CATALINA_HOME=/usr/local/hbase-explorer
+#export CATALINA_TMPDIR=/usr/local/hbase-explorer/temp
+#export CLASSPATH=$CLASSPATH:$CATALINA_BASE/bin/bootstrap.jar:$CATALINA_BASE/bin/tomcat-juli.jar
+
+export NVM_DIR="/home/hadoop/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
