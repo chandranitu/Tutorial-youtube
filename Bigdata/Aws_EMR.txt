@@ -1,0 +1,13 @@
+Cloud (AWS):  managed service- EMR
+
+ssh -i devops.pem hadoop@ec2-3-133-142-60.us-east-2.compute.amazonaws.com
+
+windows- pem to ppk (putty gen)
+
+scp -i ./devops.pem hdfs-0.0.1-SNAPSHOT.jar hadoop@ec2-3-133-142-60.us-east-2.compute.amazonaws.com:/home/hadoop
+scp -i ./devops.pem wordcount.txt hadoop@ec2-3-133-142-60.us-east-2.compute.amazonaws.com:/home/hadoop
+
+create folder in hadoop side
+
+hadoop jar /home/hadoop/hdfs-0.0.1-SNAPSHOT.jar code.WordCount /input/wordcount.txt /output/test1
+------------------------------------
