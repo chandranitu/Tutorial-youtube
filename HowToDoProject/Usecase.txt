@@ -1,0 +1,35 @@
+1. Which carrier performs better?
+
+select Year,Month,UniqueCarrier,sum(DepDelay) from air1987 where DepDelay > 0  group by Year,Month,UniqueCarrier,DepDelay;
+
+2. When is the best time of day/day of week/time of year to fly to minimise delays?
+
+select Year,Month,DayOfWeek,UniqueCarrier,sum(DepDelay) from air1987 where DepDelay > 0 group by Year,Month,DayOfWeek,UniqueCarrier,DepDelay;
+
+3. Do older planes suffer more delays?
+
+select UniqueCarrier,TailNum,LateAircraftDelay,sum(DepDelay) from air1987 where DepDelay > 0 group by UniqueCarrier,TailNum,LateAircraftDelay,DepDelay; 
+
+4.Can you detect cascading failures as delays in one airport create delays in others? Are there critical links in the system?
+
+select Year,Month,DayOfweek,Origin,Dest,ArrDelay,DepDelay from air1987 .... 
+
+5.How does the number of people flying between different locations change over time?
+
+6.How well does weather predict plane delays?
+
+7.Use spark graphx to find the top 10 flights between SFO and LAX which got diverted at least once in the months between June and Dec
+Graph cites as vertices and the direct flight routes as edges between the vertices
+
+select air.UniqueCarrier,air.FlightNum,air.Origin,air.Dest,air.diverted from air1987 as air where air.month>=6 and air.month<=12 and air.diverted=true and Origin='SFO' and Dest='LAX'order by air.year desc ,air.month desc limit 10;
+
+8.Find out the top 5 most visited destinations.
+
+9.Which month has seen the most number of cancellations due to bad weather?
+
+10.Top ten origins with the highest AVG departure delay
+
+11.Which route (origin & destination) has seen the maximum diversion?
+
+
+https://acadgild.com/blog/aviation-data-analysis-using-apache-pig

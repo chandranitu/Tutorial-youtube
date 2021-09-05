@@ -1,0 +1,41 @@
+https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/HG7NV7    dataset
+
+
+----------------------
+pig -x mapreduce '/home/hduser/hadoop/hadoop_working/project/airline/pig/case1.pig'
+
+----Hive
+
+-----------------Mysql
+Use airline;
+
+drop table airline;
+
+create table airline(Year int,Month int,DayofMonth int,DayOfWeek int,DepTime string,CRSDepTime string,ArrTime string,CRSArrTime string,UniqueCarrier string,FlightNum int,TailNum int,ActualElapsedTime int,CRSElapsedTime int,AirTime int,ArrDelay int,DepDelay int,Origin string,Dest string,Distance int,TaxiIn int,TaxiOut int,	Cancelled boolean,CancellationCode string,Diverted boolean,CarrierDelay int,WeatherDelay int,NASDelay int,SecurityDelay int,LateAircraftDelay int)COMMENT 'airline table' ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t' STORED AS TEXTFILE;
+
+LOAD DATA LOCAL INPATH '/home/hduser/hadoop/hadoop_working/project/airline/data/1987.csv' OVERWRITE INTO TABLE airline;
+
+-----------------Mysql/RDBMS
+Use airline;
+
+drop table airline;
+
+
+create table air1987(Year integer,Month integer,DayofMonth integer,DayOfWeek integer,DepTime varchar(10),CRSDepTime varchar(10),ArrTime varchar(10),CRSArrTime varchar(10),UniqueCarrier varchar(10),FlightNum integer,TailNum integer,ActualElapsedTime integer,CRSElapsedTime integer,	AirTime integer,ArrDelay integer,DepDelay integer,Origin varchar(10),Dest varchar(10),Distance integer,TaxiIn integer,TaxiOut integer,	Cancelled boolean,CancellationCode varchar(5),Diverted boolean,CarrierDelay integer,WeatherDelay integer,NASDelay integer,SecurityDelay 
+integer,LateAircraftDelay integer);
+
+
+mysqlimport  --ignore-lines=1 --fields-terminated-by=, --columns='Year,Month,DayofMonth,DayOfWeek,DepTime,CRSDepTime,ArrTime,CRSArrTime,	UniqueCarrier,FlightNum,TailNum,ActualElapsedTime,CRSElapsedTime,AirTime,ArrDelay,DepDelay,Origin,Dest,Distance,TaxiIn,TaxiOut,Cancelled,	CancellationCode,Diverted,CarrierDelay,WeatherDelay,NASDelay,SecurityDelay,LateAircraftDelay' --local -u root -p airline /home/hduser/hadoop/hadoop_working/Data/airlinedata/air1987.csv
+
+sqoop import --connect jdbc:mysql://localhost:3306/airline --username root --password root --table air1987 --m 1 --target-dir /airline/sqoop/air1987
+
+sqoop job --create air1987 -- import --connect jdbc:mysql://localhost:3306/airline --username root --password root --table air1987 --incremental lastmodified -check-column ts --target-dir /airline/sqoop/air1987 -m 1 
+sqoop job --exec air1987
+
+
+sqoop export --connect jdbc:mysql://localhost:3306/airline  --username root --password root --export-dir /airline/air1987output/part-r-00000 --table air1987output --fields-terminated-by ','
+
+create table air1987output(Year integer ,Month integer,UniqueCarrier varchar(10),DepDelay integer);
+
+
+
