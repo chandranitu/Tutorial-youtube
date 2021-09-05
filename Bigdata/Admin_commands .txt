@@ -1,0 +1,65 @@
+https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HDFSCommands.html
+
+hadoop fs
+hadoop dfs
+hadoop jar
+hadoop dfsadmin
+
+hdfs://localhost:9000
+   OR
+ hdfs:/
+
+
+######################
+hadoop version
+hadoop fs -help                                 ##always ask for help
+Hadoop job –list
+hadoop fsck hdfs:/      			 ##Run a DFS filesystem checking utility
+hadoop balancer -threshold 20         	 ##Runs the cluster-balancing utility. specified threshold , represents a percentage of disk capacity, is used to overwrite the default threshold value 								(20 percent). To stop the rebalancing process
+hadoop fs -expunge       			 ##To empty the trash
+hadoop fs -setrep -w 2 /test/sample.txt  	 ##apache_hadoop/sample.txt  ##change replication factor of a file
+hadoop fs -df hdfs:/     			 ##available on currently mounted filesystem
+hadoop fs -count hdfs:/  			 ##Count the number of directories,files and bytes under the paths that match the specified file pattern
+
+hadoop dfsadmin -safemode leave               ##make the name node leave safe mode
+
+hadoop dfsadmin -report    ##report
+
+##backup
+hadoop fs -distcp hdfs://localhost:9000 file:///home/hadoop/
+ OR
+hadoop fs -distcp hdfs:/ file:///home/hadoop/
+
+hdfs haadmin -checkHealth <serviceId>
+hdfs haadmin -failover nn2 nn1      ## If nn1 is not the active NameNode, use the hdfs haadmin -failover command to initiate a failover from nn2 to nn1:
+
+hdfs haadmin -failover [--forcefence]
+
+hadoop namenode
+hadoop datanode
+hadoop namenode hdfs://localhost:54310
+
+Hadoop admin commands:
+hadoop namenode hdfs://localhost:54310
+
+hadoop daemonlog -getlevel localhost:50070 org.apache.hadoop.mapred.JobTracker   ##Gets or sets the log level for each daemon (also known as a service).
+hadoop daemonlog -setlevel localhost:50070 org.apache.hadoop.mapred.JobTracker DEBUG
+
+
+hadoop datanode –rollback           ##Runs the HDFS DataNode service, which coordinates storage on each slave node. If you specify -rollback, the DataNode is rolled back to the previous version. Stop the DataNode and distribute the previous Hadoop version before using this option.
+
+
+hadoop mradmin -help –refreshNodes
+hadoop tasktracker
+hadoop jobtracker –dumpConfiguration
+old command, use yarn
+
+---
+
+hadoop namenode –finalize
+
+--
+hadoop secondarynamenode –geteditsize
+
+hdfs fsck <path> -list-corruptfileblocks -files -locations
+hdfs fsck /test -list-corruptfileblocks -files -locations

@@ -1,0 +1,28 @@
+Cloud (AWS):
+   scratch- one node
+            multi node
+   managed service- EMR
+
+scp -i ./devops.pem Downloads/hadoop-3.2.2.tar.gz ubuntu@3.138.34.57:/home/ubuntu
+scp -i ./devops.pem Downloads/e@bill.pdf ubuntu@3.138.34.57:/home/ubuntu
+OR
+wget https://archive.apache.org/dist/hadoop/common/hadoop-3.2.2/hadoop-3.2.2.tar.gz
+   
+	 
+ssh -i devops.pem ubuntu@3.138.34.57
+scp -i ./devops.pem Downloads/hadoop-3.2.2.tar.gz ubuntu@3.138.34.57:/home/ubuntu
+tar xzf hadoop-3.2.1.tar.gz
+
+jps:
+sudo apt install openjdk-8-jdk-headless
+------------------------------------
+
+http://3.138.34.57:8088/ 
+http://3.138.34.57:9870/
+   
+
+scp -i ./devops.pem Downloads/hadoop-3.2.2.tar.gz ubuntu@3.138.34.57:/home/ubuntu
+
+export HADOOP_EXAMPLES=/usr/local/hadoop-3.2.2/share/hadoop/mapreduce 
+
+hadoop jar hadoop-mapreduce-examples-3.2.2.jar pi 16 1000

@@ -1,0 +1,109 @@
+hdfs or hadoop
+######################
+hadoop fs -ls /
+hadoop version
+hadoop fs -df hdfs:/                       	##available on currently mounted filesystem
+hadoop fs -count hdfs:/                    	##Count the number of directories,files and bytes under the paths that match the specified file pattern
+hadoop fs -mkdir /user/training/hadoop     	##Create a new directory named “hadoop” below the /user/training directory in HDFS
+hadoop fs -put data/sample.txt /user/training/hadoop  	##Add a sample text file from the local dir “data” to the new dir created in HDFS
+hadoop fs -ls /user/training/hadoop  				##List the contents of this new directory in HDFS.
+hadoop fs -put data/retail /user/training/hadoop  		##Add the entire local directory called “retail” to the
+hadoop fs -du -s -h hadoop/retail  				##how much space this directory occupies in HDFS.
+
+hadoop fs -rm hadoop/retail/customers    	##Delete a file 
+hadoop fs -rm hadoop/retail/*       		#Delete all files
+hadoop fs -rm -r hadoop/retail      		##remove the entire directory
+
+hadoop fs -copyFromLocal /home/purchases.txt /hadoop/     ## similar to put
+
+hadoop fs -cat /hadoop/purchases.txt   		##view the contents of your text file
+
+hadoop fs -cp /user/training/*.txt /user/training/hadoop     ##copy files between directories present in HDFS
+
+hadoop fs -get hadoop/sample.txt /home/training/    ## command can be used alternaively to ‘-copyToLocal’ command
+
+hadoop fs -tail hadoop/purchases.txt                ##Display last kilobyte of the file “purchases.txt” to stdout.
+
+hdfs fs -chmod 600 hadoop/purchases.txt             ##file permissions
+
+hadoop fs -chown root:root hadoop/purchases.txt   ##change owner name and group name 
+
+hadoop fs -chgrp training hadoop/purchases.txt    ##command to change group name
+
+hadoop fs -mv hadoop apache_hadoop  		   ##Move a directory from one location to other
+
+
+ a file
+#
+hadoop fs -setrep -w 2 apache_hadoop/sample.txt
+
+# 30. Copy a directory from one node in the cluster to another
+# Use ‘-distcp’ command to copy,
+# -overwrite option to overwrite in an existing files
+# -update command to synchronize both directories
+#
+
+#backup
+
+hadoop fs -distcp hdfs://localhost:9000 file:///home/hadoop/
+hadoop fs -distcp hdfs://namenodeA/apache_hadoop hdfs://namenodeB/hadoop
+
+# 31. Command to make the name node leave safe mode
+#
+hadoop fs -expunge
+hadoop dfsadmin -safemode leave
+
+sudo -u hdfs hdfs dfsadmin -safemode leave
+
+# 32. List all the hadoop file system shell commands
+#
+hadoop fs
+
+# 33. Last but not least, always ask for help!
+#
+hadoop fs -help 
+
+hdfs haadmin -checkHealth <serviceId>
+
+hdfs haadmin -failover [--forcefence]
+
+-----------------------------------------------------------------------
+
+Hadoop admin commands:
+namenode hdfs://localhost:54310
+--
+hadoop balancer -threshold 20
+balancer: Runs the cluster-balancing utility. The specified threshold value, which represents a percentage of disk capacity, is used to overwrite the default threshold value (10 percent). To stop the rebalancing process
+--
+hadoop daemonlog -getlevel localhost:50070 org.apache.hadoop.mapred.JobTracker 
+hadoop daemonlog -setlevel localhost:50070 org.apache.hadoop.mapred.JobTracker DEBUG
+
+Gets or sets the log level for each daemon (also known as a service). Connects to http://host:port/logLevel?log=name and prints or sets the log level of the daemon that's running at host:port. Hadoop daemons generate log files that help you determine what's happening on the system, and you can use the daemonlog command to temporarily change the log level of a Hadoop component when you're debugging the system. The change becomes effective when the daemon restarts.
+--
+
+hadoop datanode –rollback
+Runs the HDFS DataNode service, which coordinates storage on each slave node. If you specify -rollback, the DataNode is rolled back to the previous version. Stop the DataNode and distribute the previous Hadoop version before using this option.
+
+--
+
+hadoop dfsadmin -report
+ [-safemode enter | leave | get | wait] [-refreshNodes] [-finalizeUpgrade] [-upgradeProgress status | details | force] [-metasave filename] 
+[-setQuota <quota> <dirname>...<dirname>] [-clrQuota <dirname>...<dirname>] [-restoreFailedStorage true|false|check] [-help [cmd]]
+
+Runs a number of Hadoop Distributed File System (HDFS) administrative operations. Use the -help option to see a list of all supported options. The generic options are a common set of options supported by several commands.
+--
+
+hadoop mradmin -help –refreshNodes
+hadoop tasktracker
+hadoop jobtracker –dumpConfiguration
+old command, use yarn
+
+---
+
+hadoop namenode –finalize
+
+--
+hadoop secondarynamenode –geteditsize
+
+hdfs fsck <path> -list-corruptfileblocks -files -locations
+hdfs fsck /test -list-corruptfileblocks -files -locations
