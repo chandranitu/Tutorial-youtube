@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: spark-submit
+  
+spec:
+  serviceAccountName: spark
+  restartPolicy: Never
+  containers:
+  - name: spark-submit
+    args:
+    - /opt/spark/bin/spark-submit
+    - --master
+    - k8s://https://10.96.0.1:443
+    #- k8s://https://127.0.0.1:44343
+    - --deploy-mode
+    - cluster
+    - --conf
+    - spark.kubernetes.container.image=cnsnoida/test-spark:3.3.0	
+    - --conf
+    - spark.executor.instances=2
+    - --conf
+    - spark.kubernetes.authenticate.driver.serviceAccountName=spark
+    - --conf
+    - spark.kubernetes.namespace=default    
+    - --class
+    - org.apache.spark.examples.SparkPi
+    - --name
+    - Spark-Pi
+    - local:///opt/spark/examples/jars/spark-examples_2.12-3.3.0.jar
+    env:
+    - name: SPARK_HOME
+      value: /opt/spark    
+          
+    resources: {}
+    image: cnsnoida/test-spark:3.3.0
+    imagePullPolicy: Always
